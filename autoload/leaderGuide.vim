@@ -224,7 +224,7 @@ function! s:calc_layout(dkmap) " {{{
         let ret.win_dim = ret.n_cols * ret.col_width
     else
         let ret.n_cols = winwidth(0) / maxlength
-        let ret.col_width = winwidth(0) / ret.n_cols
+        let ret.col_width = (ret.n_cols == 0)? 1 : winwidth(0) / ret.n_cols
         let ret.n_rows = ret.n_items / ret.n_cols + (fmod(ret.n_items,ret.n_cols) > 0 ? 1 : 0)
         let ret.win_dim = ret.n_rows
         "echom string(ret)
